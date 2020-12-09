@@ -8,7 +8,7 @@ public class SapientTestProductCatalogSearchApplication {
 
 	public static void main(String[] args) {
 		
-		System.out.println("=======SapientTestProductCatalogSearchApplication=======");
+		System.out.println("===***====SapientTestProductCatalogSearchApplication===***====");
 		
 		SpringApplication.run(SapientTestProductCatalogSearchApplication.class, args);
 	}
