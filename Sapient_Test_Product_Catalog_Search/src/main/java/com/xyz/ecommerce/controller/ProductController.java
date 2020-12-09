@@ -62,6 +62,17 @@ public class ProductController {
 	}
 	
 	
+	@GetMapping("/product/getByPrice/{priceRange1}/{priceRange2}")
+	public List<Product> getProductByPrices
+	(
+			@PathVariable(value = "priceRange1") Double priceRange1,
+			@PathVariable(value = "priceRange2") Double priceRange2
+	)
+	{
+		return productService.getProductByPrices(priceRange1,priceRange2);
+	}
+	
+	
 	
 	@GetMapping("/product")
 	public List<Product> getAllProducts()

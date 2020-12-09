@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+//@Entity(name = "product")//JPQL
 @Entity
 public class Product {
 	@Id

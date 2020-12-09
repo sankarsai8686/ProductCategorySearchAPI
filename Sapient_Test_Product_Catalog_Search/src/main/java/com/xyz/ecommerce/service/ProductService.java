@@ -39,7 +39,7 @@ public class ProductService {
 		System.out.println("findByBrand : "+findByBrand);
 		
 		//if(findByBrand != null || findByBrand.size() == 0)
-		if(findByBrand != null || findByBrand.isEmpty())
+		if(findByBrand == null || findByBrand.isEmpty())
 		{
 			logger.debug("Product Not Found In Database !!! Product with Brand : "+brand);
 			//System.out.println("Product Not Found In Database");
@@ -53,7 +53,7 @@ public class ProductService {
 	{
 		List<Product> findByPrice = productRepository.findByPrice(price);
 		
-		if(findByPrice !=null || findByPrice.isEmpty())
+		if(findByPrice ==null || findByPrice.isEmpty())
 		{
 			logger.debug("Product Not Found In Database !!! Product with price : "+price);
 			throw new ProductNotFoundException("Product Not Found In Database !!! Product with price : "+price);
@@ -66,7 +66,7 @@ public class ProductService {
 	{
 		List<Product> findByColor = productRepository.findByColor(color);
 		
-		if(findByColor !=null || findByColor.isEmpty())
+		if(findByColor ==null || findByColor.isEmpty())
 		{
 			logger.debug("Product Not Found In Database !!! Product with color : "+color);
 			throw new ProductNotFoundException("Product Not Found In Database !!! Product with color : "+color);
@@ -87,6 +87,18 @@ public class ProductService {
 	public List<Product> findAll()
 	{
 		return (List<Product>) productRepository.findAll();
+	}
+
+	public List<Product> getProductByPrices(Double priceRange1, Double priceRange2) {
+		
+		List<Product> productByPrices = productRepository.getProductByPrices(priceRange1,priceRange2);
+		
+		if(productByPrices == null || productByPrices.isEmpty())
+		{
+			throw new ProductNotFoundException("Product Not Found!!! In this price range : priceRange1 "+priceRange1+" : priceRange2 : "+priceRange2);
+		}
+		
+		return productByPrices;
 	}
 	
 	

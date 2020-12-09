@@ -2,6 +2,7 @@ package com.xyz.ecommerce.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,6 +18,10 @@ public interface ProductRepository extends CrudRepository<Product, Integer>{
 	List<Product> findByPrice(Double price);
 	List<Product> findBySku(String sku);
 	List<Product> findBySize(int size);
+	
+	//@Query(value = "select ud from product ud where ud.price between ?1 and ?2")//JPQL
+	@Query(value = "select * from Product where price between ?1 and ?2", nativeQuery=true)
+	List<Product> getProductByPrices(Double priceRange1, Double priceRange2);
 	
 
 }
